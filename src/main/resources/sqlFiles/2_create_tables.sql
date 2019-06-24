@@ -2,12 +2,12 @@ CREATE DATABASE  IF NOT EXISTS employeemanagerDB CHARACTER SET UTF8;
 USE employeemanagerDB;
 
 
-create table departments(
+CREATE TABLE departments(
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL UNIQUE
 );
 
-create table employees (
+CREATE TABLE employees (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(255) NOT NULL,
     last_name VARCHAR(255) NOT NULL,
@@ -17,6 +17,11 @@ create table employees (
     department_id INT NOT NULL,
     FOREIGN KEY (department_id) REFERENCES departments(id)
     );
+
+
+
+
+
 
 
 
