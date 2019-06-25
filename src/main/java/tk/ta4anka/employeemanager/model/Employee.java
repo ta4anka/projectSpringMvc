@@ -14,7 +14,7 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(name="first_name")
     private String firstName;
@@ -24,10 +24,14 @@ public class Employee {
 
     private int salary;
 
+
+
     @Column(name="birth_day")
+    @Temporal(TemporalType.DATE)
     private Date birthDay;
 
     @Column(name="employment_day")
+    @Temporal(TemporalType.DATE)
     private  Date employmentDay;
 
 

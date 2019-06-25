@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>List of Employees</title>
+</head>
+<body>
+<div class="w3-panel w3-blue">
+    <h3 class="w3-text-orange" style="text-shadow:1px 1px 0 #444" align="center" ><b>Employees</b></h3>
+</div>
+
+<div align="center">
+
+    <table border="1" cellpadding="5">
+        <tr class="w3-light-grey">
+            <th align="center">Id</th>
+            <th align="center">First name</th>
+            <th align="center">Last name</th>
+            <th align="center">Salary($)</th>
+            <th align="center">Birthday</th>
+            <th align="center">Employment day</th>
+            <th align="center">Department</th>
+            <th align="center">Action</th>
+        </tr>
+
+
+        <tr th:each="employee: ${employees}">
+            <td align="center" th:text="${employee.id}"></td>
+            <td align="center"th:text="${employee.firstName}"></td>
+            <td align="center"th:text="${employee.lastName}"></td>
+            <td align="center"th:text="${employee.salary}"></td>
+            <td align="center"th:text="${employee.birthDay}"></td>
+            <td align="center" th:text="${employee.employmentDay}"></td>
+            <td align="center"th:text="${employee.department.getName()}"></td>
+        </tr>
+
+
+    </table>
+</div>
+</body>
+</html>

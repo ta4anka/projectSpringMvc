@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>Title</title>
+</head>
+<body>
+
+<div align="center">
+    <form th:action="@{saveDepartment}" th:object="${department}"  method="POST">
+
+        <table border="1" cellpadding="10">
+            <caption><h3>Save department</h3></caption>
+            <tr>
+                <th>Name:</th>
+                <td><input type="text" th:field="*{name}" /></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <button class="w3-btn w3-deep-purple w3-round-medium" type="submit" name="button" value="save">save</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</div>
+</body>
+</html>
