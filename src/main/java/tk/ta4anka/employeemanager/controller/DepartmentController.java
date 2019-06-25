@@ -1,6 +1,7 @@
 package tk.ta4anka.employeemanager.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -34,18 +35,20 @@ public class DepartmentController {
     @PostMapping("/saveDepartment")
     public String saveDepartment(@ModelAttribute("department") Department department){
         departmentService.save(department);
+
         return "redirect:/department/list";
     }
 
     @GetMapping("/showFormForUpdate/{departmentId}")
-    public String showFormForUpdate(@PathVariable("departmentd") int id, Model model){
+    public String showFormForUpdate(@PathVariable("departmentId") int id, Model model){
+        System.out.println(" ========>  DEBBUGING LINE =======> id for update: " + id);
         model.addAttribute("department",departmentService.getById(id));
+        System.out.println();
         return "department_form";
     }
 
     @GetMapping("/delete/{departmentId}")
     public String deleteCustomer(@PathVariable("departmentId") int id){
-
         departmentService.deleteById(id);
 
         return "redirect:/department/list";

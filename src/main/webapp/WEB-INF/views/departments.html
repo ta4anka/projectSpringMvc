@@ -15,13 +15,14 @@
     <table border="1" cellpadding="5">
         <tr class="w3-light-grey">
             <th align="center">Id</th>
-            <th align="center">name</th>
+            <th align="center">Name</th>
             <th align="center">Action</th>
         </tr>
         <tr th:each="department: ${departments}">
             <td align="center" th:text="${department.id}"></td>
             <td align="center"th:text="${department.name}"></td>
             <td>
+
                 <a th:href="@{/department/showFormForUpdate/{departmentId}(departmentId=${department.id})}"
                    class="w3-bar-item w3-button w3-aqua">Update</a>
 
@@ -32,11 +33,9 @@
 
         </tr>
     </table>
+    <button class="w3-btn w3-grey w3-round-medium"
+            onclick="window.location.href='showFormForAdd'; return false;">add new department</button>
 
-
-<button class="w3-btn w3-grey w3-round-medium"
-        onclick="window.location.href='showFormForAdd'; return false;"
-        value="add">add new department</button>
 </div>
 </body>
 </html>

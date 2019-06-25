@@ -1,6 +1,7 @@
 package tk.ta4anka.employeemanager.model;
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -27,10 +28,12 @@ public class Employee {
 
 
     @Column(name="birth_day")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date birthDay;
 
     @Column(name="employment_day")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private  Date employmentDay;
 

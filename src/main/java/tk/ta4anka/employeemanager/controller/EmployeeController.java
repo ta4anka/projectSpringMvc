@@ -19,9 +19,9 @@ public class EmployeeController {
 
     @GetMapping("/list")
     public String listEmployee(Model model){
-         List<Employee> employees = employeeService.findAll();
-         model.addAttribute("employees", employees);
-         return "employees";
+        List<Employee> employees = employeeService.findAll();
+        model.addAttribute("employees", employees);
+        return "employees";
     }
 
     @GetMapping("/showFormForAdd")
@@ -30,21 +30,20 @@ public class EmployeeController {
         return "employee_form";
     }
 
-
-@PostMapping("/saveEmployee")
+    @PostMapping("/saveEmployee")
     public String saveEmployee(@ModelAttribute("employee") Employee employee){
         employeeService.save(employee);
         return "redirect:/employee/list";
     }
 
-    @GetMapping("/showFormForUpdate")
-    public String showFormForUpdate(@RequestParam("employeeId") int id, Model model){
+    @GetMapping("/showFormForUpdate/{employeeId}")
+    public String showFormForUpdate(@PathVariable("employeeId") int id, Model model){
         model.addAttribute("employee",employeeService.getById(id));
         return "employee_form";
     }
 
-    @GetMapping("/delete")
-    public String deleteCustomer(@RequestParam("employeeId") int id){
+    @GetMapping("/delete/{employeeId}")
+    public String deleteCustomer(@PathVariable("employeeId") int id){
 
         employeeService.deleteById(id);
 
