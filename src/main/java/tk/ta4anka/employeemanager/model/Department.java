@@ -7,7 +7,6 @@ import java.util.Set;
 
 @Getter @Setter
 @AllArgsConstructor @NoArgsConstructor
-@ToString
 @Entity
 @Table(name="departments")
 public class Department {

@@ -8,7 +8,6 @@ import java.util.Date;
 
 @Getter @Setter
 @AllArgsConstructor @NoArgsConstructor
-@ToString
 @Entity
 @Table(name="employees")
 public class Employee {
@@ -24,8 +23,6 @@ public class Employee {
     private String lastName;
 
     private int salary;
-
-
 
     @Column(name="birth_day")
     @DateTimeFormat(pattern = "yyyy-MM-dd")

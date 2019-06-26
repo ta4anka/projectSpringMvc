@@ -17,6 +17,9 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+// RootConfig - Spring and Hibernate Integration
+
+
 @Configuration
 @EnableTransactionManagement
 @ComponentScan("tk.ta4anka.employeemanager")
@@ -24,8 +27,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaRepositories("tk.ta4anka.employeemanager.repository")
 public class RootConfig {
 
+    private final Environment environment;
+
     @Autowired
-    private Environment environment;
+    public RootConfig(Environment environment) {
+        this.environment = environment;
+    }
 
     @Bean
     public DataSource dataSource() {

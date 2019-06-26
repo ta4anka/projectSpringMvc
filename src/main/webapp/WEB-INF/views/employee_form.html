@@ -3,63 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <title>Title</title>
+    <title>Employee Form</title>
 </head>
 <body>
-
 <div align="center">
-    <form th:action="@{saveEmployee}" th:object="${employee}"  method="POST">
+    <form th:action="@{/employee/saveEmployee}" th:object="${employee}" method="POST">
 
         <table border="1" cellpadding="10">
             <caption><h3>Save employee</h3></caption>
-
             <tr>
                 <th>Id of employee:</th>
-                <td><input type="text" th:field="*{id}" readonly/></td>
+                <td><input type="text" th:field="*{id}" th:readonly="true"/></td>
             </tr>
-
             <tr>
                 <th>First name:</th>
                 <td><input type="text" th:field="*{firstName}" /></td>
             </tr>
-
             <tr>
                 <th>Last name:</th>
                 <td><input type="text" th:field="*{lastName}" /></td>
             </tr>
-
             <tr>
                 <th>Salary($):</th>
                 <td><input type="text" th:field="*{salary}" /></td>
             </tr>
-
             <tr>
                 <th>Birthday:</th>
                 <td><input type="text" th:field="*{birthDay}" /></td>
             </tr>
-
             <tr>
                 <th>Employment day:</th>
                 <td><input type="text" th:field="*{employmentDay}" /></td>
             </tr>
-
-
             <tr>
                 <th>Department:</th>
-                <td><input type="text" th:field="*{department}" /></td>
+                <td><select th:field="*{department}">
+                    <option th:each="department : ${departments}"
+                            th:value="${department.id}"
+                            th:text="${department.name}">
+                    </option>
+                </select></td>
             </tr>
-
             <tr>
-                <td colspan="2" align="center">
-                    <button class="w3-btn w3-deep-purple w3-round-medium" type="submit">save</button>
-                </td>
+                <td colspan="2" align="center"><button class="w3-btn w3-deep-purple w3-round-medium" type="submit">save</button></td>
             </tr>
         </table>
 
-
-
     </form>
-
 </div>
 </body>
 </html>

@@ -6,13 +6,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
+
 
 // WebMvcConfig - Spring MVC Bean Configuration
 
@@ -22,8 +20,12 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 @ComponentScan(basePackages = "tk.ta4anka.employeemanager")
 public class WebMvcConfig implements WebMvcConfigurer {
 
+    private final ApplicationContext applicationContext;
+
     @Autowired
-    private ApplicationContext applicationContext;
+    public WebMvcConfig(ApplicationContext applicationContext) {
+        this.applicationContext = applicationContext;
+    }
 
     // 1) Create SpringResourceTemplateResolver
     @Bean
@@ -45,7 +47,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
         return templateEngine;
     }
 
-
     // 3) Register ThymeleafViewResolver
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
@@ -54,10 +55,26 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.viewResolver(resolver);
     }
 
+    // Main Page:
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/").setViewName("index");
+    }
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry
-                .addResourceHandler("/resources/**")
-                .addResourceLocations("/resources/");
+        registry.addResourceHandler(
+                "/webjars/**",
+                "/img/**",
+                "/css/**",
+                "/js/**")
+                .addResourceLocations(
+                        "classpath:/META-INF/resources/webjars/",
+                        "classpath:/static/img/",
+                        "classpath:/static/css/",
+                        "classpath:/static/js/");
     }
+
 }
+
+

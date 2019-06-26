@@ -9,10 +9,9 @@
     <version>1.0</version>
     <packaging>war</packaging>
 
-
     <name>projectSpringMVC Maven Webapp</name>
     <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
+    <url>http://localhost:8080</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -118,6 +117,8 @@
             <artifactId>thymeleaf-spring5</artifactId>
             <version>3.0.9.RELEASE</version>
         </dependency>
+
+
 
         <!--for resolving this problem  SLF4J: "Failed to load class "org.slf4j.impl.StaticLoggerBinder"."
                 after adding thymeleaf-spring5 in pom
