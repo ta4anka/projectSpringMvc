@@ -1,7 +1,7 @@
 USE employeemanagerDB;
 
--- INSERT INTO users(username,password) 
--- VALUES();
+ -- INSERT INTO users(username,password,active)
+ -- VALUES('Test','qwerty',true);
 
 INSERT INTO roles(name)
 VALUES 
@@ -11,6 +11,6 @@ VALUES
 
 
 
--- INSERT INTO user_roles VALUES
--- (1, 1),
--- (2, 2);
+ -- INSERT INTO user_role VALUES
+ -- (1, 3);
+ 

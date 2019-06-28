@@ -2,16 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <title>Spring MVC CRUD App</title>
+    <title>Index</title>
 </head>
-<body  th:style="'background: url(/img/happy_employees_at_work.jpg) no-repeat center center fixed; background-color: #02b4b8;'">
-<div align="center">
-    <h1 class="w3-text-white" style="text-shadow:1px 1px 0 #444">Spring MVC CRUD App Main Menu</h1>
+<body>
+<a th:href="@{/main}" class="w3-text-white" >Main Menu</a>
 
-    <h3 class="w3-text-yellow"style="text-shadow:1px 1px 0 #444"><a th:href="@{/department/list}">Departments</a></h3>
-    <h3 class="w3-text-yellow"style="text-shadow:1px 1px 0 #444"><a th:href="@{/employee/list}">Employees</a></h3>
-
-</div>
 </body>
 </html>

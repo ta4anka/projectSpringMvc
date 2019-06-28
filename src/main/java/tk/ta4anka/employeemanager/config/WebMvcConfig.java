@@ -55,10 +55,12 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.viewResolver(resolver);
     }
 
-    // Main Page:
+
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");
+        // for Spring Security Config:
+        registry.addViewController("/login").setViewName("login");
     }
 
     @Override
