@@ -6,6 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -18,8 +19,10 @@ import javax.sql.DataSource;
 
 // 2) Spring Security Configuration
 
+// TODO: DELETE --> https://stackoverflow.com/questions/51642604/jdbcauthentication-instead-of-inmemoryauthentication-doesnt-give-access-s
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 @ComponentScan(basePackages = "tk.ta4anka.employeemanager")
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -55,30 +58,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .authoritiesByUsernameQuery(
                         "SELECT u.username, r.name \n" +
-                                "FROM users u INNER JOIN user_role ur\n" +
-                                "ON u.id = ur.user_id INNER JOIN roles r\n" +
-                                "ON ur.role_id = r.id\n" +
+                                "FROM users u INNER JOIN roles r\n" +
+                                "ON u.role_id = r.id\n" +
                                 "WHERE u.username = ?;");
     }
 
-/*
-       @Bean  TODO: FOR TESTNING --> DELETE
-    @Override
-    public UserDetailsService userDetailsService() {
-        UserDetails user =
-                User.withDefaultPasswordEncoder()
-                        .username("user")
-                        .password("1")
-                        .roles("U")
-                        .build();
 
-        return new InMemoryUserDetailsManager(user);
-    }*/
-
-
-/*    @Bean
+    /*    @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    };*/
+   };*/
 
 }

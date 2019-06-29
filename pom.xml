@@ -118,6 +118,15 @@
             <version>3.0.9.RELEASE</version>
         </dependency>
 
+
+        <!-- https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity5 -->
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity5</artifactId>
+            <version>3.0.4.RELEASE</version>
+        </dependency>
+
+
         <!--for resolving this problem  SLF4J: "Failed to load class "org.slf4j.impl.StaticLoggerBinder"."
                 after adding thymeleaf-spring5 in pom.xml
                 need to add the next dependency: slf4j-simple-->

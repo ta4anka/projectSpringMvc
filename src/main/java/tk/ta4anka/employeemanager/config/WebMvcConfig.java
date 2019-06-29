@@ -7,6 +7,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.servlet.config.annotation.*;
+import org.thymeleaf.dialect.IDialect;
+import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
@@ -37,14 +39,19 @@ public class WebMvcConfig implements WebMvcConfigurer {
         return templateResolver;
     }
 
-
     //2) Create SpringTemplateEngine
     @Bean
     public SpringTemplateEngine templateEngine() {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver());
+        templateEngine.addDialect(securityDialect());    // SpringSecurityDialect
         templateEngine.setEnableSpringELCompiler(true);
         return templateEngine;
+    }
+
+    // TODO: --> USEFUL LINK https://stackoverflow.com/questions/47699798/disable-enable-html-element-based-on-role-springbootthymeleaf
+    private IDialect securityDialect(){
+        return new SpringSecurityDialect();
     }
 
     // 3) Register ThymeleafViewResolver
@@ -54,7 +61,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
         resolver.setTemplateEngine(templateEngine());
         registry.viewResolver(resolver);
     }
-
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {

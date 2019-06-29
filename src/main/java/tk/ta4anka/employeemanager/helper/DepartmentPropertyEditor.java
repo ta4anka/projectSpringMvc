@@ -19,8 +19,8 @@ public class DepartmentPropertyEditor extends PropertyEditorSupport {
     }
 
     @Override
-    public void setAsText(String s) {
-        Integer  id = Integer.parseInt(s);
+    public void setAsText(String departmentFromForm) {
+        Integer  id = Integer.parseInt(departmentFromForm);
         Department department = departmentService.getById(id);
         setValue(department);
     }
