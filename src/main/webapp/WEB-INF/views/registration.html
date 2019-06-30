@@ -17,17 +17,14 @@
     <h3>Add new User:</h3>
     <span th:text="${message}" />
 </div>
-
 <div align="center">
-
     <form class="w3-container" th:action="@{/registration}" method="post">
         <table border="1" cellpadding="5">
-
             <tr><th> User Name : </th>
-                <td><input class="w3-input" type="text"  name="username"/></td>
+                <td><input class="w3-input" type="text"  name="username" required/></td>
             </tr>
             <tr><th> Password: </th>
-                <td><input class="w3-input"  type="password" name="password"/></td>
+                <td><input class="w3-input"  type="password" placeholder="Password"  name="password" id="password" required/></td>
             </tr>
             <tr>
                 <td colspan="2" align="center">
@@ -36,8 +33,7 @@
             </tr>
         </table>
     </form>
-
-
+</div>
 </body>
 </html>
 

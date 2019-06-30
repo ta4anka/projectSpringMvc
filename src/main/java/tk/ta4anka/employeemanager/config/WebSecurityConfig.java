@@ -29,6 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private DataSource dataSource;
 
+    // 1)Request level Security: HttpServelt request HttpServletResponce
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http

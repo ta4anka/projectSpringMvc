@@ -4,6 +4,8 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
 import java.util.Date;
 
 @Getter @Setter
@@ -17,12 +19,16 @@ public class Employee {
     private Integer id;
 
     @Column(name="first_name")
+    @Pattern(regexp="^[A-Z]+[a-zA-Z]*$" , message="Only the letters, first is lower case")
     private String firstName;
 
     @Column(name="last_name")
+    @Pattern(regexp="^[A-Z]+[a-zA-Z]*$" , message="Only the letters, first is lower case")
     private String lastName;
 
+    @Min(value=1000, message = "Must be greater than or equal to 1000")
     private int salary;
+
 
     @Column(name="birth_day")
     @DateTimeFormat(pattern = "yyyy-MM-dd")

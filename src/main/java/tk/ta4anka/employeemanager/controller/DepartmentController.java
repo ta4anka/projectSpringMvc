@@ -3,11 +3,13 @@ package tk.ta4anka.employeemanager.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import tk.ta4anka.employeemanager.model.Department;
 
 import tk.ta4anka.employeemanager.service.DepartmentService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -35,13 +37,20 @@ public class DepartmentController {
     }
 
     @PostMapping("/saveDepartment")
-    public String saveDepartment(@ModelAttribute("department") Department department){
+    public String saveDepartment(@Valid @ModelAttribute("department")
+                                             Department department,
+                                 BindingResult bindingResult){
+
+        if (bindingResult.hasErrors()) {
+            return "department_form";
+        }
         departmentService.save(department);
         return "redirect:/department/list";
+
     }
 
     @GetMapping("/showFormForUpdate/{departmentId}")
-    public String showFormForUpdate(@PathVariable("departmentId") int id, Model model){
+    public String showFormForUpdate(@PathVariable("departmentId") int id,  Model model){
 
         System.out.println(" ========>  DEBBUGING LINE ========> id for update: " + id); // TODO: DELETE
 

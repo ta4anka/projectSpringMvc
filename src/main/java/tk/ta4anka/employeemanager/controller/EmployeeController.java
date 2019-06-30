@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,7 @@ import tk.ta4anka.employeemanager.model.Employee;
 import tk.ta4anka.employeemanager.service.DepartmentService;
 import tk.ta4anka.employeemanager.service.EmployeeService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -50,7 +52,15 @@ public class EmployeeController {
     }
 
     @PostMapping("/saveEmployee")
-    public String saveEmployee(@ModelAttribute("employee") Employee employee){
+    public String saveEmployee(@Valid @ModelAttribute("employee")
+                                           Employee employee,
+                               BindingResult bindingResult, Model model){
+
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("departments", departmentService.findAll());
+            return "employee_form";
+        }
+
         employeeService.save(employee);
         return "redirect:/employee/list";
     }

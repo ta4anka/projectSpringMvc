@@ -10,7 +10,7 @@
 <div align="center">
     <form th:action="@{/department/saveDepartment}" th:object="${department}"  method="POST">
 
-        <table border="1" cellpadding="10">
+        <table cellpadding="10">
             <caption><h3>Save department</h3></caption>
             <tr>
                 <th>Id:</th>
@@ -20,6 +20,7 @@
             <tr>
                 <th>Name:</th>
                 <td><input type="text" th:field="*{name}" /></td>
+                <td style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
             </tr>
             <tr>
                 <td colspan="2" align="center"><button class="w3-btn w3-deep-purple w3-round-medium" type="submit">save</button></td>

@@ -172,7 +172,12 @@
             <version>5.1.5.RELEASE</version>
         </dependency>
 
-
+        <!--  13) hibernate-validator -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.0.16.Final</version>
+        </dependency>
 
     </dependencies>
 

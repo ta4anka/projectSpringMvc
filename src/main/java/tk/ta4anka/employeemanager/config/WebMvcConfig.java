@@ -64,23 +64,19 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("index");
-        // for Spring Security Config:
+        registry.addRedirectViewController("/", "main");
+        registry.addViewController("/main").setViewName("main");
         registry.addViewController("/login").setViewName("login");
     }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler(
-                "/webjars/**",
-                "/img/**",
-                "/css/**",
-                "/js/**")
+                "/img/**"
+        )
                 .addResourceLocations(
-                        "classpath:/META-INF/resources/webjars/",
-                        "classpath:/static/img/",
-                        "classpath:/static/css/",
-                        "classpath:/static/js/");
+                        "classpath:/static/img/"
+                );
     }
 
 }
