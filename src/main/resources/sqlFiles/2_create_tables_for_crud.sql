@@ -1,5 +1,5 @@
-CREATE DATABASE  IF NOT EXISTS employeemanagerDB CHARACTER SET UTF8;
-USE employeemanagerDB;
+/*CREATE DATABASE  IF NOT EXISTS employeemanagerDB CHARACTER SET UTF8;
+USE employeemanagerDB;*/
 
 -- Table: departments
 CREATE TABLE departments(

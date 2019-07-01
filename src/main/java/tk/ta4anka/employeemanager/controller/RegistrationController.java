@@ -32,7 +32,7 @@ public class RegistrationController {
             model.addAttribute("message","This user exists!");
             return "registration";
         }
-        user.setRole(roleService.getById(3));
+        user.setRole(roleService.findByName("ROLE_USER"));
         userService.save(user);
 
         return "redirect:/login";

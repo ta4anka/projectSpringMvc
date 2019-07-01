@@ -11,7 +11,7 @@
 
     <name>projectSpringMVC Maven Webapp</name>
     <!-- FIXME change it to the project's website -->
-    <url>http://localhost:8080</url>
+    <url>https://springmvcemployeemanager.herokuapp.com/</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -151,21 +151,21 @@
              <version>2.3.0</version>
          </dependency>-->
 
-      <!--   &lt;!&ndash;12_1) spring-security-core&ndash;&gt;
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-core</artifactId>
-            <version>5.1.5.RELEASE</version>
-        </dependency>-->
+        <!--   &lt;!&ndash;12_1) spring-security-core&ndash;&gt;
+          <dependency>
+              <groupId>org.springframework.security</groupId>
+              <artifactId>spring-security-core</artifactId>
+              <version>5.1.5.RELEASE</version>
+          </dependency>-->
 
-     <!--12_2) spring-security-web-->
+        <!--12_2) spring-security-web-->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
             <version>5.1.5.RELEASE</version>
         </dependency>
 
-  <!--12_3) spring-security-config-->
+        <!--12_3) spring-security-config-->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
@@ -179,6 +179,42 @@
             <version>6.0.16.Final</version>
         </dependency>
 
+
+        <!-- 14)      heroku-jdbc    -->
+        <dependency>
+            <groupId>com.heroku.sdk</groupId>
+            <artifactId>heroku-jdbc</artifactId>
+            <version>0.1.1</version>
+        </dependency>
+
+
     </dependencies>
+
+    <!--       settings for Heroku      -->
+    <build>
+        <finalName>projectSpringMVC</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals><goal>copy</goal></goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>com.github.jsimone</groupId>
+                                    <artifactId>webapp-runner</artifactId>
+                                    <version>9.0.20.0</version>
+                                    <destFileName>webapp-runner.jar</destFileName>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

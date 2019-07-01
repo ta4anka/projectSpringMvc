@@ -1,4 +1,4 @@
-USE employeemanagerDB;
+-- USE employeemanagerDB;
 
 -- Table: roles
 CREATE TABLE roles (
