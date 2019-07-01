@@ -49,8 +49,14 @@ public class UserController {
     }
 
     @PostMapping("/saveUser")
-    public String saveEmployee(@ModelAttribute("user") User user){
+    public String saveUser(@ModelAttribute("user") User user){
         userService.save(user);
+        return "redirect:/user/list";
+    }
+
+    @PostMapping("/updateUser")
+    public String updateUser(@ModelAttribute("user") User user){
+        userService.update(user);
         return "redirect:/user/list";
     }
 

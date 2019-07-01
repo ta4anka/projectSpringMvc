@@ -35,8 +35,15 @@ public class UserServiceImpl implements UserService {
     public void save(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(true);
-        userRepository.save(user);
+        userRepository.saveAndFlush(user);
     }
+
+    @Override
+    public void update(User user){
+        user.setActive(true);
+        userRepository.saveAndFlush(user);
+    }
+
 
     @Override
     public List<User> findAll() {
