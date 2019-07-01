@@ -2,6 +2,7 @@ package tk.ta4anka.employeemanager.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
@@ -11,9 +12,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.sql.DataSource;
 
@@ -29,7 +28,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private DataSource dataSource;
 
-    // 1)Request level Security: HttpServelt request HttpServletResponce
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -51,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
-                .passwordEncoder(NoOpPasswordEncoder.getInstance())
+                .passwordEncoder(passwordEncoder())
                 .usersByUsernameQuery(
                         "SELECT username, password, active \n" +
                                 " FROM users \n" +
@@ -65,9 +63,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-    /*    @Bean
+        @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-   };*/
+   };
 
 }
