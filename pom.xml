@@ -175,7 +175,6 @@
             <version>7.40.0</version>
         </dependency>
 
-
     </dependencies>
 
     <!--       settings for Heroku      -->
@@ -202,6 +201,18 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!--settings for liquibase:-->
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>3.6.2</version>
+                <configuration>
+                    <propertyFile>/src/main/resources/liquibase/liquibase.properties</propertyFile>
+                    <changeLogFile>src/main/resources/liquibase/db-changelog-master.xml</changeLogFile>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
