@@ -17,12 +17,19 @@ public class User {
     private Integer id;
 
     private String username;
+
     private String password;
 
     private boolean active;
-/*
+
     @Transient
-    private String confirmPassword;*/
+    private String confirmPassword;
+
+    @Transient
+    private String phoneNumber;
+
+    @Transient
+    private String phoneCode;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id", nullable = false)
